@@ -1,0 +1,68 @@
+import React, { useState } from "react";
+
+const MiddleContent = ({ memberData, addToFavorites }) => {
+  const itemsPerPage = 10; // Number of cards to show per page
+  const [currentPage, setCurrentPage] = useState(1);
+
+  // Calculate the index range of members to display based on the current page
+  const indexOfLastMember = currentPage * itemsPerPage;
+  const indexOfFirstMember = indexOfLastMember - itemsPerPage;
+  const currentMembers = memberData.slice(indexOfFirstMember, indexOfLastMember);
+
+  // Function to handle page change
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  return (
+    <div className="bg-white p-4 md:w-1/2 mt-4 md:mt-0 md:overflow-y-auto">
+      <h2 className="text-gray-800 text-xl font-semibold mb-2 bg-green-600">
+        Member Profiles
+      </h2>
+      {/* User Profile Cards and Feed section */}
+      <div className="bg-gray-400 p-1">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {currentMembers.map((member) => (
+            <div key={member.id} className="border border-gray-300 p-2 bg-orange-500">
+              <h3 className="text-blue-500 font-semibold">{member.name}</h3>
+              <p>Age: {member.age}</p>
+              <p>Religion: {member.religion}</p>
+              {/* ... (rest of the member details) */}
+              <button
+                className="bg-blue-600 text-white px-4 py-2 rounded-md mt-2"
+                onClick={() => addToFavorites(member.name)}
+              >
+                Add to Favorites
+              </button>
+            </div>
+          ))}
+        </div>
+      </div>
+      {/* pagination section */}
+      <div className="flex justify-center mt-4">
+        {Array.from({ length: Math.ceil(memberData.length / itemsPerPage) }, (_, index) => (
+          <button
+            key={index}
+            className={`mx-2 px-3 py-2 rounded-md ${
+              currentPage === index + 1 ? "bg-blue-600 text-white" : "bg-gray-300 text-gray-800"
+            }`}
+            onClick={() => handlePageChange(index + 1)}
+          >
+            {index + 1}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default MiddleContent;
+
+
+i want add pagination like 1 2 3 ....clcik button go to next page  .i want  {/* User Profile Cards and  Feed section */}  section dynamically chnage , 
+but  {/* pagination section */}  bottom center fix position like not change user profiles changes sparete pagination change.
+one page have show only 10 cards.not use pagination 3rd party libabary style use tailwind.
+
+update ,
+
+ i want add pagination like , «123456» ..not use pagination 3rd party libabary style use tailwind.

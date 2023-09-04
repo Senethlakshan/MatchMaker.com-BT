@@ -1,0 +1,17 @@
+/* custom-scrollbar.css */
+/* Width and Color for the scrollbar track */
+::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background-color: #FFD700;
+    border-radius: 3px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #DAA520;
+  }
+  
