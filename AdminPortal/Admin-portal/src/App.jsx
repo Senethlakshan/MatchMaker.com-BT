@@ -1,13 +1,17 @@
-
+import Login from "./components/main/Login";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
  
 
   return (
     <>
-      <h1 className="text-3xl font-bold underline text-red-500">
-      Hello world!
-    </h1>
+     <Router>
+      <Routes>
+       <Route path="/" element={<Login />} />
+       
+     </Routes>
+    </Router>
     </>
   )
 }
